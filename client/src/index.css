@@ -7,6 +7,33 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+	/* padding: 0.5rem 3.5rem; */
+	color: var(--black);
+	background: linear-gradient(
+	  106.37deg,
+	  #bceebe 29.63%,
+	  #e7fae2 51.55%,
+	  #fadbf9 90.85%
+	);
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Inter', sans-serif;
+  }
+  
+  .AppGlass {
+	display: grid;
+	height: 97%;
+	width: 97%;
+	background: var(--glass);
+	border-radius: 2rem;
+	gap: 16px;
+	grid-template-columns: 11rem auto 20rem;
+	overflow: hidden;
+  }
+  
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;

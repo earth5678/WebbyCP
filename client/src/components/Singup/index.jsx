@@ -5,10 +5,10 @@ import styles from "./styles.module.css";
 
 const Signup = () => {
 	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		name: "",
 		email: "",
 		password: "",
+
 	});
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
@@ -51,20 +51,10 @@ const Signup = () => {
 						<h1>Create Account</h1>
 						<input
 							type="text"
-							placeholder="First Name"
-							name="firstName"
+							placeholder="FullName"
+							name="name"
 							onChange={handleChange}
-							value={data.firstName}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="text"
-							placeholder="Last Name"
-							name="lastName"
-							onChange={handleChange}
-							value={data.lastName}
-							required
+							value={data.name}
 							className={styles.input}
 						/>
 						<input

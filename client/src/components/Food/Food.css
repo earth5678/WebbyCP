@@ -1,0 +1,75 @@
+/* styles.css */
+table {
+    width: 200%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+   td  {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-family: 'Kanit', sans-serif;
+  }
+  
+  .TextTitle {
+    text-align: left;
+    font-family: 'Kanit', sans-serif;
+    padding: 15px;
+    margin: 10px;
+    margin-bottom: 5px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-family: 'Kanit', sans-serif;
+  }
+
+  /* ส่วนของฟอร์ม */
+.AddFoodForm {
+  background-color: #e6f7e8;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  align-content: center;
+}
+
+.AddFoodForm button {
+  margin-top: 20px;
+  background-color: #4caf50; /* สีปุ่ม */
+  color: white;
+  padding: 10px 100px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  
+}
+
+.AddFoodForm button:hover {
+  background-color: #45a049;
+}
+
+.AddFoodForm input {
+  width: 96%;
+  margin: 2px 0;
+  box-sizing: border-box;
+  font-size: 10;
+  font-family: 'Kanit', sans-serif;
+}
+.AddFoodForm label {
+  font-family: 'Kanit', sans-serif;
+}
+.Button {
+  background-color: #4caf50; /* สีปุ่ม */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif;
+  margin-top: 30%;
+  text-align: center; /* จัดวางตรงกลาง */
+  display: inline-block; /* เพื่อให้ text-align ทำงานได้ถูกต้อง */
+}

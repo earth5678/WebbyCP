@@ -1,11 +1,17 @@
 .signup_container {
-	width: 100%;
-	min-height: 100vh;
-	background-color: #f5f5f5;
+	color: var(--black);
+	background: linear-gradient(
+	  106.37deg,
+	  #c5ffbc 29.63%,
+	  #cffff5 51.55%,
+	  #f7f4e2 90.85%
+	);
+	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
+	font-family: 'Inter', sans-serif;
+  }
 
 .signup_form_container {
 	width: 900px;

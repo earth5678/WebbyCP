@@ -34,19 +34,19 @@ const Login = () => {
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
-						<input
-							type="email"
-							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
-							className={styles.input}
-						/>
+						<h2>ยินดีต้อนรับสู่ Diabet Control !</h2>
+							<input
+								type="email"
+								placeholder="อีเมล"
+								name="email"
+								onChange={handleChange}
+								value={data.email}
+								required
+								className={styles.input}
+							/>
 						<input
 							type="password"
-							placeholder="Password"
+							placeholder="รหัสผ่าน"
 							name="password"
 							onChange={handleChange}
 							value={data.password}
@@ -55,15 +55,17 @@ const Login = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing In
+							เข้าสู่ระบบ
 						</button>
 					</form>
 				</div>
 				<div className={styles.right}>
-					<h1>New Here ?</h1>
+					<img src='/assets/logo.png' className={styles.userImageLogo} alt="userImageLogo" />
+					<img src='/assets/2.png' className={styles.userImage} alt="userImage" />
+					<p>ยังไม่มีบัญชีผู้ใช้ ?</p>
 					<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
-							Sing Up
+							ลงทะเบียน
 						</button>
 					</Link>
 				</div>

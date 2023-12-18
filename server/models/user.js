@@ -2,12 +2,25 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
+mongoose.set('strictQuery', false);
 
 const userSchema = new mongoose.Schema({
-	firstName: { type: String, required: true },
-	lastName: { type: String, required: true },
+	name: {type: String},
 	email: { type: String, required: true },
 	password: { type: String, required: true },
+	freindRequests: [
+		{type: mongoose.Schema.Types.ObjectId, ref: "User",},
+	  ],
+
+	  friends: [
+		{type: mongoose.Schema.Types.ObjectId,ref: "User",},
+	  ],
+
+	  sentFriendRequests: [
+		{type: mongoose.Schema.Types.ObjectId,ref: "User",},
+	  ],
+	  
+	  isAdmin: { type: Boolean, default: false }, // Default value is false
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -21,10 +34,10 @@ const User = mongoose.model("user", userSchema);
 
 const validate = (data) => {
 	const schema = Joi.object({
-		firstName: Joi.string().required().label("First Name"),
-		lastName: Joi.string().required().label("Last Name"),
+		name: Joi.string().required().label("Name"),
 		email: Joi.string().email().required().label("Email"),
 		password: passwordComplexity().required().label("Password"),
+
 	});
 	return schema.validate(data);
 };

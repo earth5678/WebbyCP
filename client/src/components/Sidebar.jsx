@@ -20,42 +20,43 @@ const Sidebar = () => {
       navigate("/login"); // Navigate to the login page
     };
   
-
   return (
     <div className="container">
       <nav className="sidebar">
         <div className='logo'>
           <img src='/assets/logo3.png' alt='Logo' />
         </div>
-
+        
         <div className="menu">
-
           <div className={pathname === "/" ? "menuItem active" : "menuItem"}>
             <UilEstate />
             <Link to="/">Dashboard</Link>
           </div>
 
+          <div className={pathname === "/user" ? "menuItem active" : "menuItem"}>
+          <UilUsersAlt />
+            <Link to="/user">ข้อมูลผู้ใช้</Link>
+          </div>
+
           <div className={pathname === "/tracking" ? "menuItem active" : "menuItem"}>
           <UilUsersAlt />
-            <Link to="/tracking">Tracking</Link>
+            <Link to="/tracking">ติดตามผู้ป่วย</Link>
           </div>
           
           <div className={pathname === "/food" ? "menuItem active" : "menuItem"}>
           <UilClipboardAlt />
-            <Link to="/food">Food Management</Link>
+            <Link to="/food">อาหารที่แนะนำ</Link>
           </div>
 
-          <div className={pathname === "/user" ? "menuItem active" : "menuItem"}>
-          <UilUsersAlt />
-            <Link to="/user">User Management</Link>
+          <div className={pathname === "/forbidden" ? "menuItem active" : "menuItem"}>
+          <UilClipboardAlt />
+            <Link to="/forbidden">อาหารที่ควรงด</Link>
           </div>
 
           <div className={pathname === "/chat" ? "menuItem active" : "menuItem"}>
           <UilUsersAlt />
-            <Link to="/chat">Chat</Link>
+            <Link to="/chat">แชท</Link>
           </div>
-
-
 
           <div className="menuItem" onClick={handleLogout}>
             <UilSignOutAlt />
@@ -70,7 +71,6 @@ const Sidebar = () => {
       </div>
 
     </div>
-
   );
 };
 

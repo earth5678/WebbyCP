@@ -75,6 +75,7 @@ const DataTable = () => {
   
   return ( 
     <div className="">
+      <Addfood/>
       <h2 className="TextTitle">ข้อมูลอาหารและปริมาณที่แนะนำ</h2>
       {isModalOpen && (
         <div className="modal">

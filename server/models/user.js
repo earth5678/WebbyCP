@@ -5,21 +5,19 @@ const passwordComplexity = require("joi-password-complexity");
 mongoose.set('strictQuery', false);
 
 const userSchema = new mongoose.Schema({
-	name: {type: String},
-	email: { type: String, required: true },
-	password: { type: String, required: true },
-	freindRequests: [
-		{type: mongoose.Schema.Types.ObjectId, ref: "User",},
-	  ],
-
-	  friends: [
-		{type: mongoose.Schema.Types.ObjectId,ref: "User",},
-	  ],
-
-	  sentFriendRequests: [
-		{type: mongoose.Schema.Types.ObjectId,ref: "User",},
-	  ],
-	  
+	  fullName: {
+		type: String,
+		required: true,
+	  },
+	  email: {
+		type: String,
+		required: true,
+		unique: true,
+	  },
+	  password: {
+		type: String,
+		required: true,
+	  },
 	  isAdmin: { type: Boolean, default: false }, // Default value is false
 });
 
@@ -34,7 +32,7 @@ const User = mongoose.model("user", userSchema);
 
 const validate = (data) => {
 	const schema = Joi.object({
-		name: Joi.string().required().label("Name"),
+		fullName: Joi.string().required().label("fullName"),
 		email: Joi.string().email().required().label("Email"),
 		password: passwordComplexity().required().label("Password"),
 

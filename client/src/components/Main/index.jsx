@@ -6,6 +6,8 @@ import User from '../UserManage/UserManage'
 import Dashboard from '../Dashboard/Dashboard';
 import Food from '../Food/Food';
 import Tracking from '../Tracking/Tracking';
+import Forbidden from '../Food/Forbidden';
+
 export default function Main () {
   return (
     <div className="App">
@@ -15,6 +17,7 @@ export default function Main () {
             <Route index element={<Dashboard />} />
             <Route path="food" element={<Food />} />
             <Route path="user" element={<User />} />
+            <Route path="forbidden" element={<Forbidden />} />
             <Route path="tracking/*" element={<Tracking />} />
           </Route>
         </Routes>

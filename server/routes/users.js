@@ -22,9 +22,6 @@ router.post("/", async (req, res) => {
     const newUser = new User({
       ...req.body,
       password: hashPassword,
-      friendRequests: [],
-      friends: [],
-      sentFriendRequests: [],
 	  isAdmin: true, // Set to true for admin users
     });
 
@@ -78,4 +75,14 @@ router.delete('/:userId', async (req, res) => {
   }
 });
 
+router.post('/users', async (req, res) => {
+  try {
+    const newUser = new User(req.body);
+    const savedUser = await newUser.save();
+    res.json(savedUser);
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: 'Error creating user' });
+  }
+});
 module.exports = router;

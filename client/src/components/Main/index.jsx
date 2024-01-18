@@ -7,6 +7,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import Food from '../Food/Food';
 import Tracking from '../Tracking/Tracking';
 import Forbidden from '../Food/Forbidden';
+import Chat from '../Chat/DashChat';
 
 export default function Main () {
   return (
@@ -18,7 +19,8 @@ export default function Main () {
             <Route path="food" element={<Food />} />
             <Route path="user" element={<User />} />
             <Route path="forbidden" element={<Forbidden />} />
-            <Route path="tracking/*" element={<Tracking />} />
+            <Route path="tracking/" element={<Tracking />} />
+            <Route path="chat/*" element={<Chat />} />
           </Route>
         </Routes>
       </div>

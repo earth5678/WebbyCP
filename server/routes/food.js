@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
+
 const Food = require('../models/food');
 
-// Create a new food entry
 router.post('/foods', async (req, res) => {
   try {
-    console.log('Incoming request body:', req.body);
-
     const newFood = new Food(req.body);
     const savedFood = await newFood.save();
     res.status(201).json(savedFood);
@@ -24,10 +22,9 @@ router.get('/foods', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 router.put('/foods/:id', async (req, res) => {
   try {
-    console.log('Updating food with ID:', req.params.id);
-    console.log('Updated data:', req.body);
 
     const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, { new: true });
     
@@ -35,7 +32,6 @@ router.put('/foods/:id', async (req, res) => {
       console.log('Food not found');
       return res.status(404).json({ error: 'Food not found' });
     }
-
     console.log('Food updated successfully:', updatedFood);
     res.status(200).json(updatedFood);
   } catch (error) {

@@ -1,20 +1,20 @@
-// AddUser.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
+import './styles.module.css';
 
 const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png';
 
 const AddUser = ({ onAddUser }) => {
   const [newUserData, setNewUserData] = useState({
-    name: '',
+    fullName: '',
     email: '',
     password: '',
-    image: defaultImage, // Set default image URL
+    image: defaultImage,
     dateOfBirth: '',
     weight: '',
     height: '',
     diabetesType: '',
+    challengeCalorie: ''
   });
 
   const handleInputChange = (e) => {
@@ -24,105 +24,125 @@ const AddUser = ({ onAddUser }) => {
 
   const addUser = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/users', newUserData);
+      const response = await axios.post(`http://localhost:8080/api/users/add`, newUserData);
       console.log(response.data);
 
       setNewUserData({
-        name: '',
+        fullName: '',
         email: '',
         password: '',
-        image: defaultImage, // Reset to default image URL
+        image: defaultImage,
         dateOfBirth: '',
         weight: '',
         height: '',
         diabetesType: '',
+        challengeCalorie: ''
       });
 
       if (onAddUser) {
         onAddUser(response.data);
       }
     } catch (error) {
-      console.error('Error adding user:', error);
+      console.error('Error adding user:', error.response ? error.response.data : error.message);
+      // Handle error gracefully, show a message to the user, etc.
     }
   };
 
+
   return (
-    <div>
-      <h2>Add User</h2>
+    <div className="AddFoodForm">
+      <h2>เพิ่มผู้ใช้งาน</h2>
       <form>
-        <label>
-          Name:
+        <label style={{ margin: '1px', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start', fontFamily: 'Kanit' }}>
+          ชื่อ-นามสกุล
           <input
             type="text"
-            name="name"
-            value={newUserData.name}
+            name="fullName"
+            value={newUserData.fullName}
             onChange={handleInputChange}
-          />
+            style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }} />
         </label>
-        <br />
         <label>
-          Email:
+          อีเมล
           <input
             type="text"
             name="email"
             value={newUserData.email}
             onChange={handleInputChange}
+            style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
           />
         </label>
-        <br />
         <label>
-          Password:
+          รหัสผ่าน
           <input
             type="password"
             name="password"
             value={newUserData.password}
             onChange={handleInputChange}
+            style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
           />
         </label>
-        <br />
 
         <label>
-          Date of Birth:
+          วัน เดือน ปี เกิด
           <input
             type="date"
             name="dateOfBirth"
             value={newUserData.dateOfBirth}
             onChange={handleInputChange}
+            style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
           />
         </label>
-        <br />
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '10px' }}>
+          <div style={{ flex: 1, marginRight: '10px' }}>
+            <label style={{ display: 'block', fontFamily: 'Kanit' }}>
+              น้ำหนัก
+              <input
+                type="text"
+                name="weight"
+                value={newUserData.weight}
+                onChange={handleInputChange}
+                style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
+              />
+            </label>
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', fontFamily: 'Kanit' }}>
+              ส่วนสูง
+              <input
+                type="text"
+                name="height"
+                value={newUserData.height}
+                onChange={handleInputChange}
+                style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
+              />
+            </label>
+          </div>
+        </div>
+
         <label>
-          Weight:
-          <input
-            type="text"
-            name="weight"
-            value={newUserData.weight}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Height:
-          <input
-            type="text"
-            name="height"
-            value={newUserData.height}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Diabetes Type:
+          ประเภทเบาหวาน
           <input
             type="text"
             name="diabetesType"
             value={newUserData.diabetesType}
             onChange={handleInputChange}
+            style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
           />
         </label>
-        <br />
+        <label>
+          เป้าหมายแคลอรี่ต่อวัน
+          <input
+            type="text"
+            name="challengeCalorie"
+            value={newUserData.challengeCalorie}
+            onChange={handleInputChange}
+            style={{ marginTop: '2px', padding: '4px', borderRadius: '5px', border: '1px solid #52B788', fontFamily: 'Kanit' }}
+          />
+        </label>
+
         <button type="button" onClick={addUser}>
-          Add User
+          เพิ่มผู้ใช้
         </button>
       </form>
     </div>

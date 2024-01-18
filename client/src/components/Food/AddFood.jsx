@@ -3,16 +3,18 @@ import axios from 'axios';
 import './Food.css';
 
 const AddFoodForm = () => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  const defaultImage = 'https://img.pikbest.com/png-images/qianku/seafood-gourmet-hot-pot-cartoon-design_2383291.png!sw800';
   const [newFoodData, setNewFoodData] = useState({
     FoodName: '',
     FoodCalorie: '',
-    FoodProtien: '',
+    FoodProtein: '',
     FoodFat: '',
     FoodCarbo: '',
     FoodFiber: '',
+    FoodImage: defaultImage,
   });
-
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewFoodData((prevData) => ({
@@ -24,10 +26,12 @@ const AddFoodForm = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   const [data, setData] = useState([]);
+
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/foods`);
+      const response = await axios.get(`http://localhost:8080/foods`);
       setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -36,59 +40,67 @@ const AddFoodForm = () => {
 
   const addFood = async () => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/foods`, newFoodData);
-      console.log('Food created successfully. Response:', response.data);
+      const response = await axios.post(`http://localhost:8080/foods`, newFoodData);
+      console.log(response.data);
+
       setNewFoodData({
         FoodName: '',
         FoodCalorie: '',
-        FoodProtien: '',
+        FoodProtein: '',
         FoodFat: '',
         FoodCarbo: '',
         FoodFiber: '',
+        FoodImage: defaultImage,
       });
-      fetchData(); // Refresh the data after adding a new entry
+      fetchData();
+      setShowSuccessAlert(true);
+      
 
     } catch (error) {
-      console.error('Error creating food:', error);
+      console.error('Error adding user:', error.response ? error.response.data : error.message);
     }
   };
 
-  const toggleFormVisibility = () => {
-    setIsFormVisible((prev) => !prev);
-  };
 
   return (
     <div>
-      <button className="Button" onClick={toggleFormVisibility}>
-        เพิ่มรายการอาหาร
-      </button>
-      {isFormVisible && (
-        <div className="AddFoodForm">
-          <form>
-            <label>เมนู:</label>
-            <input type="text" name="FoodName" value={newFoodData.FoodName} onChange={handleInputChange} />
+      <div className="AddFoodForm">
+        <form>
+          <h2>เพิ่มรายการอาหาร</h2>
+          <label>เมนู</label>
+          <input type="text" name="FoodName" value={newFoodData.FoodName} onChange={handleInputChange}
+           style={{ marginTop: '1px', padding: '5px', borderRadius: '5px', border: '2px solid #52B788', fontFamily: 'Kanit' }} />
 
-            <label>แคลอรี่:</label>
-            <input type="text" name="FoodCalorie" value={newFoodData.FoodCalorie} onChange={handleInputChange} />
+          <label>แคลอรี่ (กิโลแคลอรี่)</label>
+          <input type="text" name="FoodCalorie" value={newFoodData.FoodCalorie} onChange={handleInputChange}
+          style={{ marginTop: '1px', padding: '5px', borderRadius: '5px', border: '2px solid #52B788', fontFamily: 'Kanit' }}
+           />
 
-            <label>โปรตีน:</label>
-            <input type="text" name="FoodProtien" value={newFoodData.FoodProtien} onChange={handleInputChange} />
+          <label>โปรตีน (กรัม)</label>
+          <input type="text" name="FoodProtein" value={newFoodData.FoodProtein} onChange={handleInputChange}
+          style={{ marginTop: '1px', padding: '5px', borderRadius: '5px', border: '2px solid #52B788', fontFamily: 'Kanit' }} />
 
-            <label>ไขมัน:</label>
-            <input type="text" name="FoodFat" value={newFoodData.FoodFat} onChange={handleInputChange} />
+          <label>ไขมัน (กรัม)</label>
+          <input type="text" name="FoodFat" value={newFoodData.FoodFat} onChange={handleInputChange}
+          style={{ marginTop: '1px', padding: '5px', borderRadius: '5px', border: '2px solid #52B788', fontFamily: 'Kanit' }} />
 
-            <label>คาร์โบไฮเดรต:</label>
-            <input type="text" name="FoodCarbo" value={newFoodData.FoodCarbo} onChange={handleInputChange} />
+          <label>คาร์โบไฮเดรต (กรัม)</label>
+          <input type="text" name="FoodCarbo" value={newFoodData.FoodCarbo} onChange={handleInputChange}
+          style={{ marginTop: '1px', padding: '5px', borderRadius: '5px', border: '2px solid #52B788', fontFamily: 'Kanit' }} />
 
-            <label>ไฟเบอร์:</label>
-            <input type="text" name="FoodFiber" value={newFoodData.FoodFiber} onChange={handleInputChange} />
+          <label>ไฟเบอร์ (กรัม)</label>
+          <input type="text" name="FoodFiber" value={newFoodData.FoodFiber} onChange={handleInputChange}
+          style={{ marginTop: '1px', padding: '5px', borderRadius: '5px', border: '2px solid #52B788', fontFamily: 'Kanit' }} />
 
-            <button type="button" onClick={addFood}>
-              เพิ่มรายการ
-            </button>
-          </form>
-        </div>
-      )}
+          <button type="button" onClick={addFood}>
+            เพิ่มรายการ
+          </button>
+
+        </form>
+      </div>
+
+
+
     </div>
   );
 };

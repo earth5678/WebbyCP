@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import './Sidebar.css'; // Import a CSS file for styling
+import './Sidebar.css';
 import { UilEstate, UilClipboardAlt, UilUsersAlt, UilSignOutAlt } from "@iconscout/react-unicons";
 
 const Sidebar = () => {

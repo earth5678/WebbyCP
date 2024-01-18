@@ -3,15 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@iconscout/react-unicons": "^2.0.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
+    "motion": "^10.17.0",
+    "primereact": "^10.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fontawesome": "^1.7.1",
     "react-icons": "^4.12.0",
+    "react-is": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.2"
@@ -41,6 +48,6 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.21.2"
   }
 }

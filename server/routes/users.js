@@ -85,4 +85,19 @@ router.post('/users', async (req, res) => {
     res.status(500).json({ error: 'Error creating user' });
   }
 });
+
+router.post("/add", async (req, res) => {
+  const { fullName, email, password, image, dateOfBirth, weight, height, diabetesType, challengeCalorie } = req.body;
+
+  try {
+    const newUser = new User({ fullName, email, password, image, dateOfBirth, weight, height, diabetesType, challengeCalorie });
+    await newUser.save();
+    res.status(200).json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error("Error registering user", error);
+    res.status(500).json({ message: "Error registering the user!", error: error.message });
+  }
+});
+
+
 module.exports = router;

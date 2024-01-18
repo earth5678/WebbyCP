@@ -6,23 +6,27 @@ const foodSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  FoodProtien: {
-    type: String,
+  FoodProtein: {
+    type: Number,
     required: true,
   },
   FoodFat: {
-    type: String,
+    type: Number,
     required: true,
   },
   FoodCarbo: {
-    type: String,
+    type: Number,
     required: true,
   },
   FoodFiber: {
-    type: String,
+    type: Number,
     required: true,
   },
   FoodCalorie: {
+    type: Number,
+    required: true,
+  },
+  FoodImage: {
     type: String,
     required: true,
   },

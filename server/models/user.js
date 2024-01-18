@@ -18,6 +18,30 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	  },
+	  image: {
+		type: String,
+		required: true,
+	  },
+	  dateOfBirth: {
+		type: Date,
+		required: true,
+	  },
+	  weight: {
+		type: Number, // เพิ่มน้ำหนัก
+		required: true,
+	  },
+	  height: {
+		type: Number, // เพิ่มส่วนสูง
+		required: true,
+	  },
+	  diabetesType: {
+		type: String,
+		required: true,
+	  },
+		challengeCalorie: {
+		type: Number,
+		required: true,
+	  },
 	  isAdmin: { type: Boolean, default: false }, // Default value is false
 });
 

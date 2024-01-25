@@ -21,9 +21,9 @@ const Sidebar = () => {
     };
   
   return (
-    <div className="container">
-      <nav className="sidebar">
-        <div className='logo'>
+    <div className="container1">
+      <nav className="sidebar1">
+        <div className='logo1'>
           <img src='/assets/logo3.png' alt='Logo' />
         </div>
         

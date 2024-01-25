@@ -7,7 +7,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import Food from '../Food/Food';
 import Tracking from '../Tracking/Tracking';
 import Forbidden from '../Food/Forbidden';
-import Chat from '../Chat/DashChat';
+import Chat from '../modules/Dashboard/index'
+
 
 export default function Main () {
   return (
@@ -20,7 +21,9 @@ export default function Main () {
             <Route path="user" element={<User />} />
             <Route path="forbidden" element={<Forbidden />} />
             <Route path="tracking/" element={<Tracking />} />
-            <Route path="chat/*" element={<Chat />} />
+            <Route path="chat" element={<Chat />} />
+
+
           </Route>
         </Routes>
       </div>

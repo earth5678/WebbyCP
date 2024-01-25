@@ -1,18 +1,30 @@
-const mongoose = require('mongoose');
-mongoose.set('strictQuery', false);
+// models/Message.js
 
-const messageSchema = mongoose.Schema({
-    conversationId: {
-        type: String,
-    },
-    senderId: {
-        type: String
-    },
-    message: {
-        type: String
-    }
+const mongoose = require('mongoose');
+
+const messageSchema = new mongoose.Schema({
+  conversationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  senderId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  receiverId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    required: true,
+  },
 });
 
-const Messages = mongoose.model('Message', messageSchema);
+const Message = mongoose.model('Message', messageSchema);
 
-module.exports = Messages;
+module.exports = Message;

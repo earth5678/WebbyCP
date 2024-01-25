@@ -1,4 +1,4 @@
-.container {
+.container1 {
   display: flex;
 }
 
@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-.sidebar {
+.sidebar1 {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -16,11 +16,11 @@
 }
 
 /* logo */
-.bars{
+.bars1{
   display: none;
 }
 
-.logo {
+.logo1 {
   display: flex;
   height: 5rem;
   font-weight: bold;
@@ -31,11 +31,11 @@
   height: 5%;
   padding:10px ;
 }
-.logo > span > span {
+.logo1 > span > span {
   color: var(--pink);
 }
 
-.logo > img {
+.logo1 > img {
   width: 12rem;
   height: 4rem;
 }
